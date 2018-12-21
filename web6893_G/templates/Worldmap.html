@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <!-- I recommend you host this file on your own, since this will change without warning -->
+  <script src="http://datamaps.github.io/scripts/datamaps.world.min.js?v=1"></script>
+  <h2>Countries with High Density of User</h2>
+  <!-- <p><a href="http://datamaps.github.io/">DataMaps Project Homepage</a></p> -->
+  <div id="container1" style="position: relative; width: 80%; max-height: 450px;"></div>
+ 
+     
+     <script>
+       //basic map config with custom fills, mercator projection
+      var map = new Datamap({
+        scope: 'world',
+        element: document.getElementById('container1'),
+        projection: 'mercator',
+        height: 500,
+        fills: {
+          defaultFill: 'rgba(0,244,244,0.9)',
+          lt50: 'rgba(0,244,244,0.9)',
+          lt80: 'rgba(0,10,20,0.5)',
+          // usa: 'rgba(237,102,101,0.9)',
+          // ida: 'rgba(228,94,11,0.9)',
+          // uk: 'rgba(221,151,11,0.9)',
+          // can: 'rgba(207,185,64,0.6)',
+          // ger: 'rgba(153,148,29,0.9)',
+          // vit: 'rgba(104,211,36,0.9)',
+          // bra: 'rgba(89,121,201,0.9)',
+          // jap: 'rgba(115,89,201,0.9)',
+
+          usa: 'rgba(237,102,101,0.9)',
+          ida: 'rgba(228,94,11,0.8)',
+          uk: 'rgba(221,151,11,0.7)',
+          can: 'rgba(207,185,64,0.6)',
+          ger: 'rgba(153,148,29,0.5)',
+          vit: 'rgba(104,211,36,0.4)',
+          bra: 'rgba(89,121,201,0.3)',
+          jap: 'rgba(115,89,201,0.2)',
+
+          bubble:'red',
+          // lt80;'blue'
+
+          // lt50: 'rgba(0,244,244,0.9)',
+          // lt60: 'rgba(0,231,203,0.9)',
+          // lt50: 'rgba(0,244,244,0.9)',
+          // lt50: 'rgba(0,244,244,0.9)',
+          // lt50: 'rgba(0,244,244,0.9)',
+          // lt50: 'rgba(0,244,244,0.9)',
+          // lt50: 'rgba(0,244,244,0.9)',
+          // lt50: 'rgba(0,244,244,0.9)',
+          // orange:'orange'
+          // yellow:'yellow'
+// 218 United States 509218
+// 93  India 91584
+// 217 United Kingdom  62111
+// 36  Canada  39142
+// 75  Germany 33050
+// 223 Vietnam 32490
+// 28  Brazil  30832
+// 102 Japan 30057
+        },
+        
+        data: {
+          USA: {fillKey: 'usa' },
+          IND: {fillKey: 'ida' },
+          GBR: {fillKey: 'uk' },
+          CAN: {fillKey: 'can' },
+          DEU: {fillKey: 'ger'},
+          VNM: {fillKey: 'vit'},
+          BRA: {fillKey: 'bra'},
+          JPN: {fillKey: 'jap' }       
+        },
+        
+        
+      })
+
+        map.bubbles([
+        {name: '509218', latitude: 42.32, longitude: -94.32, radius: 9, fillKey: 'bubble'},
+       {name: '91584', latitude: 21.32, longitude: 75.32, radius: 9, fillKey: 'bubble'},
+       {name: '62111', latitude: 55.32, longitude: 0.0, radius: 9, fillKey: 'bubble'},
+       {name: '39142', latitude: 56.32, longitude: -94.32, radius: 9, fillKey: 'bubble'},
+       {name: '33050', latitude: 50, longitude: 10, radius: 9, fillKey: 'bubble'},
+       {name: '32490', latitude: 18, longitude: 105, radius: 9, fillKey: 'bubble'},
+       {name: '30832', latitude: -17, longitude: -46, radius: 9, fillKey: 'bubble'},
+       {name: '30057', latitude: 37, longitude: 137, radius: 9, fillKey: 'bubble'},
+       
+
+     ], {
+       popupTemplate: function(geo, data) {
+         return  "<div class='hoverinfo'> There are " + data.name+" users</div>";
+       }
+     });
+
+        // <font color="red">This is America!</font>
+
+     </script>
